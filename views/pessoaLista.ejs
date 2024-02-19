@@ -1,0 +1,46 @@
+<%-include('./partials/head.ejs')%>
+<section>
+   <div class="container">
+      <table class="striped responsive-table">
+         <thead>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>e-mail</th>
+            <th>Opções</th>
+         </thead>
+         <tbody>
+            <% pessoas.forEach(pessoa =>{ %>
+               <tr>
+                  <td><%= pessoa.nome %></td>
+                  <td><%= pessoa.telefone %></td>
+                  <td><%= pessoa.email %></td>
+                  <td>
+                     <a href="/pessoa/edit/<%= pessoa.id %>" class="orange lighten-2 waves-effect waves-light btn-small">
+                        <i class="material-icons">edit</i>
+                     </a>
+                     <a href="#" class="red lighten-2 waves-effect waves-light btn-small" onclick=javascript:confirmarDelecao(<%= pessoa.id %>)>
+                        <i class="material-icons">delete</i>
+                     </a>
+                  </td>
+               </tr>
+            <% }) %>
+         </tbody>   
+      </table>
+      <script src="/js/ejs.js"></script>
+      <script>
+         function passarLista(){
+            let people = [];
+            let html = ejs.render('<%= pessoas.join(", "); %>', {people: people});
+            console.log(">>>>>>> \n"+people)
+         }
+      </script>
+      <script>
+         function confirmarDelecao(id){
+            if (confirm("Tem certeza que deseja deletar?")){
+               window.location.href="/pesoa/delete/"+id
+            }
+         }   
+      </script>   
+   </div>
+</section>
+<%-include('./partials/footer.ejs')%>

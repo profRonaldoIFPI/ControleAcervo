@@ -1,0 +1,71 @@
+<%-include('./partials/head.ejs')%>
+<section>
+   <div class="container">
+         <% if(objeto){ %>
+            <%console.log("Editar "+objeto.nome)%>
+            <form class="col s12" method="POST" action="/objeto/update">
+               <div class="row">
+                  <div class="col s6">
+                     <label for="objeto">Nome</label>
+                     <input type="text" name="nome" value="<%= objeto.nome %>"><br>
+                  </div>
+                  <div class="col s6">
+                     <label for="objeto">Descrição</label>
+                     <input type="text" name="descricao" value="<%= objeto.descricao %>"><br> 
+                  </div>
+                  <div class="col s6">
+                     <label for="objeto">Tipo</label>
+                     <input type="text" name="tipo" value="<%= objeto.tipo %>"><br>
+                  </div>
+                  <div class="col s6">
+                     <label for="objeto">Data de aquisição</label>
+                     <input type="text" name="data_aquisicao" value="<%= objeto.data_aquisicao %>"><br>
+                  </div>
+                  <div class="col s6">
+                     <label for="objeto">Valor</label>
+                     <input type="text" name="valor" value="<%= objeto.valor %>"><br>
+                  </div>
+                  <div class="col s6">
+                     <label for="objeto">Observacoes</label>
+                     <textarea name="observacoes"><%= objeto.observacoes %></textarea><br>
+                     <input type="hidden" name="id" value="<%= objeto.id %>">
+                     <button class="waves-effect waves-light btn" type="submit">Atualizar</button>
+                  </div>
+               </div>
+            </form>
+         <%} else {%>
+            <%console.log("Cadastro")%>
+            <form  class="col s12" method="POST" action="/objeto/create">
+               <div class="row">
+                  <div class="col s12">
+                     <label for="objeto">Nome</label>
+                     <input type="text" name="nome"><br>
+                  </div>
+                  <div class="col s12">
+                     <label for="objeto">Descrição</label>
+                     <input type="text" name="descricao"><br> 
+                  </div>
+                  <div class="col s6">
+                     <label for="objeto">Tipo</label>
+                     <input type="text" name="tipo"><br>
+                  </div>   
+                  <div class="col s6">
+                     <label for="objeto">Data de aquisição</label>
+                     <input type="date" name="data_aquisicao" class="datepicker"><br>
+                  </div>
+                  <div class="col s12">
+                     <label for="objeto">Valor</label>
+                     <input type="text" name="valor"><br>
+                  </div>
+                  <div class="col s12">
+                     <label for="objeto">Observacoes</label>
+                     <textarea name="observacoes"></textarea><br>
+                     <button class="waves-effect waves-light btn" type="submit">Salvar</button>
+                  </div>   
+               </div>
+            </form>
+         <%}%>
+      </div>
+   </div>
+</section>
+<%-include('./partials/footer.ejs')%>

@@ -1,0 +1,20 @@
+   <%-include('./partials/head.ejs')%>
+   <section>
+      <div class="container section">
+         <p>Esta aplicação permite a administração de emprestimos de um acervo de objetos de quaisquer natureza.</p>
+         <p>Desenvolvido com o objetivo de estudar e aplicar tecnologias modernas de desenvolvimento para aplicações web. O que ocorrei durante as aulas da disciplina de Programação para Web do curso Técnico em Informática do IFPI Campus Floriano.</p>
+         <p>A aplicação consiste em um CRUD para duas tabelas, Objetos e Pessoas, que tem um relacionamento de muitos para muitos denominada emprestimo.</p>
+      </div>
+      <div class="container divider"></div>
+      <div class="row container">
+         <div class="col l4 m6 s12 btnholder"><a class="waves-effect waves-light btn btnmenu" href="/objeto/new"><i class=" material-icons left">add</i>Novo objeto</a></div>
+         <div class="col l4 m6 s12 btnholder"><a class="waves-effect waves-light btn btnmenu" href="/objeto/retreave"><i class="material-icons left">list</i>Lista objetos</a></div>
+         <div class="col l4 m12 s12 btnholder"><a class="waves-effect waves-light btn btnmenu" href="/emprestimo/loanReport"><i class="material-icons left">list</i>Objetos emprestados</a></div>
+      </div>
+      <div class="row container">
+         <div class="col l6 m6 s12 btnholder"><a class="waves-effect waves-light btn btnmenu" href="/pessoa/new"><i class="material-icons left">add</i>Nova pessoa</a></div>
+         <div class="col l6 m6 s12 btnholder"><a class="waves-effect waves-light btn btnmenu" href="/pessoa/retreave"><i class="material-icons left">list</i>Lista pessoas</a></div>
+      </div>
+   </section>
+   <%-include('./partials/footer.ejs')%>
+

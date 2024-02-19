@@ -1,0 +1,39 @@
+
+.total{
+   margin: 0;
+   padding: 0;
+}
+.brand-logo{
+   margin-left: 2em;
+   margin-right: 1em;
+}
+
+a{
+  color: white;
+  align-content: center ;
+}
+
+.btnmenu{
+   width: 100%;
+}
+
+.btnholder{
+   margin-bottom: 1em;
+   
+}
+.radiobnt{
+   border-style: solid;
+   border-color: red;
+}
+
+/*.divbotoes{
+   display: flex;
+   justify-content: space-around;
+}*/
+
+/*.btnholder, .inicio{
+   margin: 0 1em 0 1em;
+}*/
+.divider{
+   margin-bottom: 2em;
+}

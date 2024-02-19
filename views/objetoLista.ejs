@@ -1,0 +1,59 @@
+<%-include('./partials/head.ejs')%>
+<section>
+   <div class="container">
+      <table class="striped responsive-table">
+         <thead>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+            <th>Disponível</th>
+            <th class="collumctions">Opções</th>
+         </thead>
+         <tbody>
+            <% objetos.forEach(objeto =>{ %>
+               <tr>
+                  <td><%= objeto.nome %></td>
+                  <td><%= objeto.descricao %></td>
+                  <td><%= objeto.tipo %></td>
+                  <% if (objeto.status){ %>
+                     <td>Sim</td>
+                     <td class="collumctions">
+                        <form action="/emprestimo/buscarPessoa" method="POST">
+                           <button class="waves-effect waves-light btn-small" type="submit">
+                              <i class="material-icons">arrow_upward</i>
+                           </button>
+                           
+                           <input type="hidden" name="id" value="<%= objeto.id %>">
+                           <a href="/objeto/edit/<%= objeto.id %>" class="orange lighten-2 waves-effect waves-light btn-small">
+                              <i class="material-icons">edit</i>
+                           </a>
+                           <a href="#" class="red lighten-2 waves-effect waves-light btn-small" onclick=javascript:confirmarDelecao(<%= objeto.id %>)>
+                              <i class="material-icons">delete</i>
+                           </a>
+                        </form>
+                     </td>
+                  <%} else {%>
+                     <td>Não</td>
+                     <td>
+                        <form action="/emprestimo/giveBack" method="POST">
+                           <input type="hidden" name="objetoId" value="<%= objeto.id %>">
+                           <button class="waves-effect waves-light btn-small" type="submit">
+                              <i class="material-icons">arrow_downward</i>
+                           </button>
+                        </form>
+                     </td> 
+                  <%} %>
+               </tr>
+            <% }) %>
+         </tbody>   
+      </table>
+      <script>
+         function confirmarDelecao(id){
+            if (confirm("Tem certeza que deseja deletar?")){
+               window.location.href="/objeto/delete/"+id
+            }
+         }   
+      </script>   
+   </div>
+</section>
+<%-include('./partials/footer.ejs')%>

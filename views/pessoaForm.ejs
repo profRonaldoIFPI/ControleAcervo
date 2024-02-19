@@ -1,0 +1,39 @@
+<%-include('./partials/head.ejs')%>
+<section>
+   <div class="container">
+      <% if(pessoa){ %>
+         <%console.log("Editar "+pessoa.nome)%>
+         <form method="POST" action="/pessoa/update">
+            <label for="pessoa">Nome</label>
+            <input type="text" name="nome" value="<%= pessoa.nome %>"><br>
+            <label for="pessoa">CPF</label>
+            <input type="text" name="cpf" value="<%= pessoa.cpf %>"><br> 
+            <label for="pessoa">Telefone</label>
+            <input type="text" name="telefone" value="<%= pessoa.telefone %>"><br>
+            <label for="pessoa">Endereço</label>
+            <input type="text" name="endereco" value="<%= pessoa.endereco %>"><br>
+            <label for="pessoa">e-mail</label>
+            <input type="text" name="email" value="<%= pessoa.email %>"><br>
+            <input type="hidden" name="id" value="<%= pessoa.id %>">
+            <button>Atualizar</button>
+         </form>
+      <%} else {%>
+         <%console.log("Cadastro")%>
+         <form method="POST" action="/pessoa/create">
+            <label for="pessoa">Nome</label>
+            <input type="text" name="nome"><br>
+            <label for="pessoa">CPF</label>
+            <input type="text" name="cpf"><br> 
+            <label for="pessoa">Telefone</label>
+            <input type="text" name="telefone"><br>
+            <label for="pessoa">Endereço</label>
+            <input type="text" name="endereco"><br>
+            <label for="pessoa">e-mail</label>
+            <input type="text" name="email"><br>
+            <button class="waves-effect waves-light btn" type="submit">Salvar</button>
+         </form>
+         <br>
+      <%}%>
+   </div>
+</section>
+<%-include('./partials/footer.ejs')%>   

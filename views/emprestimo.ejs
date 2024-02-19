@@ -1,0 +1,55 @@
+<%-include('./partials/head.ejs')%>
+<section>
+   <div class="container">
+      <h5>Emprestar <%= objeto.nome %> para:</h5> 
+      <div class="row"> 
+         <form action="#" method="POST">
+            <div class="col l4 m6 s12">
+               <input type="text" name="nomePessoa" placeholder="Busque pelo nome...">
+               <input type="hidden" name="id" value="<%= objeto.id%>">
+            </div>
+               <button class="btn" type="submit" >Buscar</button>
+            </form>
+      </div>
+      <hr>
+      <form action="/emprestimo/loan" method="POST">
+         <input type="hidden" name="objetoId" value="<%=objeto.id%>">
+         <table class="striped responsive-table"> 
+            <thead>  
+               <th>Nome</th>
+               <th>Telefone</th>
+               <th>e-mail</th>
+               <th>Opções</th>
+            </thead>
+            <tbody>
+               <% pessoas.forEach(pessoa =>{ %>
+                  <tr>
+                     <td><%= pessoa.nome %></td>
+                     <td><%= pessoa.telefone %></td>
+                     <td><%= pessoa.email %></td>
+                     <td>
+                        <label>
+                           <input class="with-gap radio" type="radio" name="pessoaId" value="<%=pessoa.id%>"> 
+                           <span></span>
+                        </label>
+                        <a href="/pessoa/edit/<%= pessoa.id %>" class="orange lighten-2 waves-effect waves-light btn-small">
+                           <i class="material-icons">edit</i>
+                        </a>
+                     </td>
+                  </tr>
+               <% }) %>
+            </tbody>   
+         </table>
+         <hr>
+         <div class="row"> 
+            <div class="col l4 m6 s12">
+               <label for="devolucao">Data prevista de devolução: </label>
+               <input type="date" name="devolucao">
+            </div>
+            <br>
+            <button class="btn" type="submit">Emprestar</button>
+         </div>
+      </form>
+   </div>
+</section>
+<%-include('./partials/footer.ejs')%>
